@@ -18,8 +18,8 @@ const itemsService = {
   },
 
   //Items in a store displayed on store page
-  getShopItems (knex, shop){
-    return knex('items').where({shop: shop});
+  getShopItems (knex, shopId){
+    return knex.from('items').select('items.id', 'items.name', 'items.desc', 'items.price', 'items.category', 'items.shop', 'items.picUrl').join('shops', {'items.shop': 'shops.name'}).where({'shops.id': shopId});
   },
 
 

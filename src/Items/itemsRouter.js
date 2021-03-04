@@ -18,10 +18,10 @@ itemsRouter
   
 
 itemsRouter
-  .route('/shopname/:shopname')
+  .route('/shop/:shopid')
   .get((req, res, next) => {
-    console.log(req.params.shopname);
-    itemsService.getShopItems(req.app.get('db'), req.params.shopname)
+    console.log(req.params.shopid);
+    itemsService.getShopItems(req.app.get('db'), req.params.shopid)
       .then((items) => {
         console.log(items);
         res.json(items);
