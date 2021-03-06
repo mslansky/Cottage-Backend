@@ -4,7 +4,14 @@ const itemsService = require('./itemsService');
 const itemsRouter = express.Router();
 
 
-
+itemsRouter
+  .route('/random')
+  .get((req, res, next) => {
+    itemsService.getRandom(req.app.get('db'))
+      .then((items) => {
+        res.json(items);
+      });
+  });
 
 itemsRouter
   .route('/:itemsid')
@@ -14,6 +21,8 @@ itemsRouter
         res.json(items);
       });
   });
+
+
   
   
 

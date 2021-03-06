@@ -1,10 +1,21 @@
 'use strict';
 const express = require('express');
 const cartsService = require('./cartsService');
+
 const cartsRouter = express.Router();
+const jsonBodyParser = express.json();
 
-
-
+cartsRouter
+  .post('/', jsonBodyParser, (req, res, next) => {
+    console.log(req.body);
+    cartsService.createCartItems(req.app.get('db'), req.body)
+      .then((carts) => {
+        res.json(carts);
+      })
+      .catch((error) => {
+        res.json(error);
+      });
+  });
 
 cartsRouter
   .route('/:userId')
@@ -12,15 +23,6 @@ cartsRouter
     cartsService.getCartItems(req.app.get('db'), req.params.userId)
       .then((carts) => {
         res.json(carts);
-      });
-  })
-  .post((req, res, next) => {
-    cartsService.createCartItems(req.app.get('db'), req.body)
-      .then((carts) => {
-        res.json(carts);
-      })
-      .catch((error) => {
-        res.json(error);
       });
   });
   
@@ -36,7 +38,7 @@ cartsRouter
         res.json(error);
       });
   })
-  .post((req, res, next) => {
+  .post(jsonBodyParser, (req, res, next) => {
     cartsService.updateCartItems(req.app.get('db'), req.body)
       .then((carts) => {
         res.json(carts);
