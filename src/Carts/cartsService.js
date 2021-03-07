@@ -23,7 +23,7 @@ const cartsService = {
   },
   
   getCartItems (knex, userId){
-    return knex.from('carts').select('carts.id', 'carts.userId', 'carts.itemId', 'carts.quantity', 'items.price', 'items.category', 'items.shop', 'items.picUrl').join('items', {'items.id': 'carts.itemId'}).where({userId: userId});
+    return knex.from('carts').select('carts.id', 'carts.userId', 'carts.itemId', 'carts.quantity', 'items.name', 'items.price', 'items.category', 'items.shop', 'items.picUrl').join('items', {'items.id': 'carts.itemId'}).where({userId: userId});
   },
 
   updateCartItems (knex, items){
