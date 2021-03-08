@@ -10,6 +10,8 @@ function clean(obj) {
   return obj;
 }
 
+//Gets Randomized Items to Display on Front Page
+
 function getRandom (knex) {
   let items = [];
   return knex.from('items').count().then(x => {

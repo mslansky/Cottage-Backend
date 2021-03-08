@@ -1,10 +1,10 @@
 'use strict';
 const express = require('express');
 const cartsService = require('./cartsService');
-
 const cartsRouter = express.Router();
 const jsonBodyParser = express.json();
 
+//Posts cart items
 cartsRouter
   .post('/', jsonBodyParser, (req, res, next) => {
     console.log(req.body);
