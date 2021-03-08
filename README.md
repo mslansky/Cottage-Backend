@@ -13,10 +13,15 @@ This fullstack application is my final capstone. Cottage is an E-Commerce Homema
 that allows for users to create a login and shop for local home baked goods! 
 
 ## Routes
+
 /api/auth This route allows you to POST to authenticate a username, and password to login
+
 /api/items This route allows you to GET one item, random items, or specific items for the shops and stores
+
 /api/shops This route allows you to GET one shop by category or id to view a specific shop
+
 /api/user This route POSTS a username, name, and password to create a profile
+
 /api/cart This route POSTS, GETS, DELETES, and UPDATES Items into a cart to allow the user to change the quantity, delete, or view the items
 
 ## Landing page
